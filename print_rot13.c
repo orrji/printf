@@ -10,7 +10,7 @@
 int print_R(va_list R)
 {
 	char *str;
-	unsigned int k, j;
+	unsigned int i, j;
 	int count = 0;
 	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
@@ -18,11 +18,11 @@ int print_R(va_list R)
 	str = va_arg(R, char *);
 	if (str == NULL)
 		str = "(ahyy)";
-	for (k = 0; str[k]; k++)
+	for (i = 0; str[i]; i++)
 	{
 		for (j = 0; in[j]; j++)
 		{
-			if (in[j] == str[k])
+			if (in[j] == str[i])
 			{
 				_putchar(out[j]);
 				count++;
@@ -31,7 +31,7 @@ int print_R(va_list R)
 		}
 		if (!in[j])
 		{
-			_putchar(str[k]);
+			_putchar(str[i]);
 			count++;
 		}
 	}
