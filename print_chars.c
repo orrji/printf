@@ -67,24 +67,24 @@ static int hex_print(char c)
  */
 int print_S(va_list S)
 {
-	unsigned int i;
+	unsigned int k;
 	int count = 0;
 	char *str = va_arg(S, char *);
 
 	if (str == NULL)
 		str = "(null)";
-	for (i = 0; str[i]; i++)
+	for (k = 0; str[k]; k++)
 	{
-		if (str[i] < 32 || str[i] >= 127)
+		if (str[k] < 32 || str[k] >= 127)
 		{
 			_putchar('\\');
 			_putchar('x');
 			count += 2;
-			count += hex_print(str[i]);
+			count += hex_print(str[k]);
 		}
 		else
 		{
-			_putchar(str[i]);
+			_putchar(str[k]);
 			count++;
 		}
 	}
@@ -100,16 +100,16 @@ int print_S(va_list S)
 int print_r(va_list r)
 {
 	char *str;
-	int i, count = 0;
+	int k, count = 0;
 
 	str = va_arg(r, char *);
 	if (str == NULL)
 		str = ")llun(";
-	for (i = 0; str[i]; i++)
+	for (k = 0; str[k]; k++)
 		;
-	for (i -= 1; i >= 0; i--)
+	for (k -= 1; k >= 0; k--)
 	{
-		_putchar(str[i]);
+		_putchar(str[k]);
 		count++;
 	}
 	return (count);
