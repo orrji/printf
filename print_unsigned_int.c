@@ -9,23 +9,23 @@
 int print_u(va_list u)
 {
 	unsigned int a[10];
-	unsigned int k, m, n, sum;
+	unsigned int i, m, n, sum;
 	int count;
 
 	n = va_arg(u, unsigned int);
 	m = 1000000000; /* (10 ^ 9) */
 	a[0] = n / m;
-	for (k = 1; k < 10; k++)
+	for (i = 1; i < 10; i++)
 	{
 		m /= 10;
-		a[k] = (n / m) % 10;
+		a[i] = (n / m) % 10;
 	}
-	for (k = 0, sum = 0, count = 0; k < 10; k++)
+	for (i = 0, sum = 0, count = 0; i < 10; i++)
 	{
-		sum += a[k];
-		if (sum || k == 9)
+		sum += a[i];
+		if (sum || i == 9)
 		{
-			_putchar('0' + a[k]);
+			_putchar('0' + a[i]);
 			count++;
 		}
 	}
