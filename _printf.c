@@ -15,7 +15,6 @@ static int (*check_for_specifiers(const char *format))(va_list)
 		{"s", print_s},
 		{"i", print_i},
 		{"d", print_d},
-		{'%', convert_percent},
 		{"u", print_u},
 		{"b", print_b},
 		{"o", print_o},
