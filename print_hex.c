@@ -10,7 +10,7 @@
 int print_hex(unsigned int n, unsigned int c)
 {
 	unsigned int a[8];
-	unsigned int k, m, sum;
+	unsigned int i, m, sum;
 	char diff;
 	int count;
 
@@ -20,20 +20,20 @@ int print_hex(unsigned int n, unsigned int c)
 	else
 		diff = 'a' - ':';
 	a[0] = n / m;
-	for (k = 1; k < 8; k++)
+	for (i = 1; i < 8; i++)
 	{
 		m /= 16;
-		a[k] = (n / m) % 16;
+		a[i] = (n / m) % 16;
 	}
-	for (k = 0, sum = 0, count = 0; k < 8; k++)
+	for (i = 0, sum = 0, count = 0; i < 8; i++)
 	{
-		sum += a[k];
-		if (sum || k == 7)
+		sum += a[i];
+		if (sum || i == 7)
 		{
-			if (a[k] < 10)
-				_putchar('0' + a[k]);
+			if (a[i] < 10)
+				_putchar('0' + a[i]);
 			else
-				_putchar('0' + diff + a[k]);
+				_putchar('0' + diff + a[i]);
 			count++;
 		}
 	}
@@ -70,10 +70,10 @@ int print_X(va_list X)
  */
 static unsigned long _pow(unsigned int base, unsigned int exponent)
 {
-	unsigned int k;
+	unsigned int i;
 	unsigned long ans = base;
 
-	for (k = 1; k < exponent; k++)
+	for (i = 1; i < exponent; i++)
 	{
 		ans *= base;
 	}
@@ -90,16 +90,16 @@ int print_p(va_list p)
 {
 	int count = 0;
 	unsigned int a[16];
-	unsigned int k, sum;
+	unsigned int i, sum;
 	unsigned long n, m;
 	char *str = "(nil)";
 
 	n = va_arg(p, unsigned long);
 	if (n == 0)
 	{
-		for (k = 0; str[k]; k++)
+		for (i = 0; str[i]; i++)
 		{
-			_putchar(str[k]);
+			_putchar(str[i]);
 			count++;
 		}
 		return (count);
@@ -109,20 +109,20 @@ int print_p(va_list p)
 	count = 2;
 	m = _pow(16, 15); /* 16 ^ 15 */
 	a[0] = n / m;
-	for (k = 1; k < 16; k++)
+	for (i = 1; i < 16; i++)
 	{
 		m /= 16;
-		a[k] = (n / m) % 16;
+		a[i] = (n / m) % 16;
 	}
-	for (k = 0, sum = 0; k < 16; k++)
+	for (i = 0, sum = 0; i < 16; i++)
 	{
-		sum += a[k];
-		if (sum || k == 15)
+		sum += a[i];
+		if (sum || i == 15)
 		{
-			if (a[k] < 10)
-				_putchar('0' + a[k]);
+			if (a[i] < 10)
+				_putchar('0' + a[i]);
 			else
-				_putchar('0' + ('a' - ':') + a[k]);
+				_putchar('0' + ('a' - ':') + a[i]);
 			count++;
 		}
 	}
