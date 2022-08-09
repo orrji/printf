@@ -9,7 +9,7 @@
  */
 static int (*check_for_specifiers(const char *format))(va_list)
 {
-	unsigned int i;
+	unsigned int k;
 	print_t p[] = {
 		{"c", print_c},
 		{"s", print_s},
@@ -27,14 +27,14 @@ static int (*check_for_specifiers(const char *format))(va_list)
 		{NULL, NULL}
 	};
 
-	for (i = 0; p[i].t != NULL; i++)
+	for (k = 0; p[k].t != NULL; k++)
 	{
-		if (*(p[i].t) == *format)
+		if (*(p[k].t) == *format)
 		{
 			break;
 		}
 	}
-	return (p[i].f);
+	return (p[k].f);
 }
 
 /**
@@ -45,37 +45,37 @@ static int (*check_for_specifiers(const char *format))(va_list)
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i = 0, count = 0;
+	unsigned int k = 0, count = 0;
 	va_list valist;
 	int (*f)(va_list);
 
 	if (format == NULL)
 		return (-1);
 	va_start(valist, format);
-	while (format[i])
+	while (format[k])
 	{
-		for (; format[i] != '%' && format[i]; i++)
+		for (; format[k] != '%' && format[k]; k++)
 		{
-			_putchar(format[i]);
+			_putchar(format[k]);
 			count++;
 		}
-		if (!format[i])
+		if (!format[k])
 			return (count);
-		f = check_for_specifiers(&format[i + 1]);
+		f = check_for_specifiers(&format[k + 1]);
 		if (f != NULL)
 		{
 			count += f(valist);
-			i += 2;
+			k += 2;
 			continue;
 		}
-		if (!format[i + 1])
+		if (!format[k + 1])
 			return (-1);
-		_putchar(format[i]);
+		_putchar(format[k]);
 		count++;
-		if (format[i + 1] == '%')
-			i += 2;
+		if (format[k + 1] == '%')
+			k += 2;
 		else
-			i++;
+			k++;
 	}
 	va_end(valist);
 	return (count);
